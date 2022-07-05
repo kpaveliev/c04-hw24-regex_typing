@@ -1,2 +1,9 @@
-# lesson23_project_source
-это репозиторий с исходником домашнего задания к уроку "Функциональное программирование"
+# SkyPro.Python course
+## Homework 23. Functional programming
+
+**Content**
+
+1.
+
+Kirill Paveliev\
+July 2022
