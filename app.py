@@ -11,11 +11,11 @@ app = Flask(__name__)
 @app.route("/perform_query/", methods=['GET', 'POST'])
 def perform_query():
     # Get filename and commands from request
-    file_name = request.json.get('file_name')
-    cmd1 = request.json.get('cmd1') + '_'
-    value1 = request.json.get('value1')
-    cmd2 = request.json.get('cmd2') + '_'
-    value2 = request.json.get('value2')
+    file_name = request.args.get('file_name')
+    cmd1 = request.args.get('cmd1') + '_'
+    value1 = request.args.get('value1')
+    cmd2 = request.args.get('cmd2') + '_'
+    value2 = request.args.get('value2')
 
     # Check data passed is correct and file path exists
     if (
