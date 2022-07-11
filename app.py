@@ -1,33 +1,14 @@
-import os
-
 from flask import Flask, request, abort
 
 import utils
-from constants import DATA_DIR, COMMANDS
 
 app = Flask(__name__)
 
 
 @app.route("/perform_query/", methods=['GET', 'POST'])
 def perform_query():
-    # Get filename and commands from request
-    file_name = request.args.get('file_name')
-    cmd1 = request.args.get('cmd1') + '_'
-    value1 = request.args.get('value1')
-    cmd2 = request.args.get('cmd2') + '_'
-    value2 = request.args.get('value2')
-
-    # Check data passed is correct and file path exists
-    if (
-        None in (file_name, cmd1, value1, cmd2, value2)
-        or cmd1 not in COMMANDS
-        or cmd2 not in COMMANDS
-    ):
-        return abort(400, 'Wrong params passed')
-
-    file_path = os.path.join(DATA_DIR, file_name)
-    if not os.path.exists(file_path):
-        return abort(400, 'Wrong filename passed')
+    # Extract commands from request and check them
+    file_path, cmd1, value1, cmd2, value2 = utils.get_args(request.args)
 
     # Perform commands
     try:
