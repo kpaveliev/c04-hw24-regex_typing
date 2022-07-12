@@ -1,11 +1,13 @@
 import os
-from typing import Iterator, List, Iterable, Set, Union
+import re
+from typing import Iterator, List, Iterable, Set, Union, Tuple, Any
+
 from flask import abort
 
 from constants import COMMANDS, DATA_DIR
 
 
-def get_args(request_dict):
+def get_args(request_dict: dict) -> Any:
     """Get arguments from request and check them"""
 
     file_name = request_dict.get('file_name')
@@ -62,3 +64,9 @@ def limit_(iterable: Iterator, number: Union[str, int]) -> List:
 def unique_(iterable: Iterator, *args) -> Set:
     """Return only unique lines"""
     return set(iterable)
+
+
+def regex_(iterable: Iterator, expression: str) -> Iterable:
+    """Filter data with regular expression passed"""
+    regex = re.compile(rf'{str(expression)}')
+    return filter(lambda line: regex.search(line), iterable)
