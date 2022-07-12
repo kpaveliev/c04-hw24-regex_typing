@@ -49,9 +49,13 @@ def sort_(iterable: Iterator, order: str = 'asc') -> List:
 
 def map_(iterable: Iterator, column: Union[str, int]) -> Iterable:
     """Get only column specified"""
+
+    regex = re.compile(r'(?: - - \[)|(?:\] ")|(?:" ")|(?: \")|(?:\" )')
+
     if not str(column).isdigit():
-        raise TypeError('Not digit passed as a column number to the map function')
-    return map(lambda line: line.split(' ')[int(column)] + '\n', iterable)
+        raise TypeError('Negative number or text passed as a column number to the map function')
+
+    return map(lambda line: regex.split(line)[int(column)], iterable)
 
 
 def limit_(iterable: Iterator, number: Union[str, int]) -> List:

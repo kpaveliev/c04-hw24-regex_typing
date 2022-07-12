@@ -13,8 +13,8 @@ Only two commands at a time could be passed (no more, no less)
 **Commands available**
 
 1. regex - filter data with regular expression passed
-2. filter - get lines which contain string passed
-3. map - get data from the passed column only
+2. map - get data from the passed column only (update: lines are split using regular expressions)
+3. filter - get lines which contain string passed
 4. unique - get unique data only
 5. sort - sort data in ascending or descending order
 6. limit - limit lines to the passed number
