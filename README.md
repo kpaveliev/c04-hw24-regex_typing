@@ -1,5 +1,5 @@
 # SkyPro.Python course
-## Homework 24. Functional programming
+## Homework 24. Regular expressions, Typing
 
 **Description**
 
@@ -7,8 +7,7 @@ Flask web-server available at http://127.0.0.1:5000/perform_query/
 which could perform queries on the file kept in 'data' folder
 
 To perform a query you should pass filename, command name and command value in a request
-
-Only two commands at a time could be passed (no more, no less)
+Exactly two commands at a time should be passed (no more, no less)
 
 **Commands available**
 
@@ -21,7 +20,7 @@ Only two commands at a time could be passed (no more, no less)
 
 **Request examples**
 
-Commands could be passed in request parameters
+Commands could be passed as request parameters
 
 Example:
 http://127.0.0.1:5000/perform_query/?cmd1=filter&value1=GET&cmd2=limit&value2=2
