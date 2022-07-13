@@ -1,34 +1,5 @@
-import os
 import re
-from typing import Iterator, List, Iterable, Set, Union, Tuple, Any
-
-from flask import abort
-
-from constants import COMMANDS, DATA_DIR
-
-
-def get_args(request_dict: dict) -> Any:
-    """Get arguments from request and check them"""
-
-    file_name = request_dict.get('file_name')
-    cmd1 = request_dict.get('cmd1') + '_'
-    value1 = request_dict.get('value1')
-    cmd2 = request_dict.get('cmd2') + '_'
-    value2 = request_dict.get('value2')
-
-    if (
-        None in (file_name, cmd1, value1, cmd2, value2)
-        or cmd1 not in COMMANDS
-        or cmd2 not in COMMANDS
-    ):
-        return abort(400, 'Wrong params passed')
-
-    file_path = os.path.join(DATA_DIR, file_name)
-
-    if not os.path.exists(file_path):
-        return abort(400, 'Wrong filename passed')
-
-    return file_path, cmd1, value1, cmd2, value2
+from typing import Iterator, List, Iterable, Set, Union
 
 
 def filter_(iterable: Iterator, string_to_search: str) -> Iterable:
